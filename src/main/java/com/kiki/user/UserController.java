@@ -8,17 +8,20 @@ import org.springframework.web.bind.annotation.*;
 import java.time.ZonedDateTime;
 import java.util.Map;
 
+@RequestMapping("/users")
 @RestController
 public class UserController {
     private final UserService userService;
     public UserController(UserService userService) {
         this.userService = userService;
     }
-    @GetMapping("users/{id}")
+
+    @GetMapping("/{id}")
     public User getUser(@PathVariable("id") int id) {
         return userService.findUser(id);
     }
-    @GetMapping("users/{id}/addressId/{addressId}")
+
+    @GetMapping("/{id}/addressId/{addressId}")
     public User getUserFromAddress(@PathVariable("id") int id, @PathVariable("addressId") int addressId) {
         return userService.findUserFromAddress(id,addressId);
     }
