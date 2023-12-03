@@ -36,7 +36,7 @@ public class UserService {
     public User insert(String name, String email, Integer addressId, Integer age) {
         Optional<User> userOptional = this.userMapper.findByEmail(email);
         if (userOptional.isPresent()) {
-            throw new UserAlreadyExistsException("name, email, addressId and age already exists");
+            throw new UserAlreadyExistsException("name, email, address and age already exists");
         }
         User user = new User(null, name, email, addressId, age);
         userMapper.insert(user);
