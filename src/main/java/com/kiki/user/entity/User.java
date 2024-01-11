@@ -1,5 +1,7 @@
 package com.kiki.user.entity;
 
+import java.util.Objects;
+
 public class User {
     private Integer id;
     private String name;
@@ -33,5 +35,18 @@ public class User {
 
     public Integer getAge() {
         return age;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        User user = (User) o;
+        return Objects.equals(id, user.id) && Objects.equals(name, user.name) && Objects.equals(email, user.email) && Objects.equals(addressId, user.addressId) && Objects.equals(age, user.age);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id, name, email, addressId, age);
     }
 }

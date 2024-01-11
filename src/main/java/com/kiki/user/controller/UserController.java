@@ -14,14 +14,21 @@ import org.springframework.web.util.UriComponentsBuilder;
 
 import java.net.URI;
 import java.time.ZonedDateTime;
+import java.util.List;
 import java.util.Map;
 
 //@RequestMapping("/users")
 @RestController
 public class UserController {
     private final UserService userService;
+
     public UserController(UserService userService) {
         this.userService = userService;
+    }
+
+    @GetMapping("/users")
+    List<User> findAll() {
+        return userService.findAll();
     }
 
     @GetMapping("/users/{id}")
@@ -31,7 +38,7 @@ public class UserController {
 
     @GetMapping("/users/{id}/address/{addressId}")
     public User getUserFromAddress(@PathVariable("id") int id, @PathVariable("addressId") int addressId) {
-        return userService.findUserFromAddress(id,addressId);
+        return userService.findUserFromAddress(id, addressId);
     }
 
     @PostMapping("/users")
@@ -41,6 +48,7 @@ public class UserController {
         UserResponse body = new UserResponse("user created");
         return ResponseEntity.created(location).body(body);
     }
+
     @ExceptionHandler(value = UserNotFoundException.class)
     public ResponseEntity<Map<String, String>> handleUserNotFoundException(
             UserNotFoundException e, HttpServletRequest request) {

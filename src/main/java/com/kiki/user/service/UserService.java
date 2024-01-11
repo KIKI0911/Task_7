@@ -6,6 +6,7 @@ import com.kiki.user.exception.UserNotFoundException;
 import com.kiki.user.mapper.UserMapper;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
 import java.util.Optional;
 
 @Service
@@ -15,6 +16,9 @@ public class UserService {
         this.userMapper = userMapper;
     }
 
+    public List<User> findAll() {
+        return this.userMapper.findAll();
+    }
     public User findUser(Integer id) {
         Optional<User> user_Id = this.userMapper.findById(id);
         if (user_Id.isPresent()) {
