@@ -1,4 +1,4 @@
-package com.kiki.user;
+package com.kiki.user.exception;
 
 public class UserNotFoundException extends RuntimeException {
     public UserNotFoundException(String message) {

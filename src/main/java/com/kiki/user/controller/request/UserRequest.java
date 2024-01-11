@@ -1,13 +1,13 @@
-package com.kiki.user;
+package com.kiki.user.controller.request;
 
-public class User {
-    private int id;
+public class UserRequest {
+    private Integer id;
     private String name;
     private String email;
-    private int addressId;
-    private int age;
+    private Integer addressId;
+    private Integer age;
 
-    public User(int id, String name, String email, int addressId, int age) {
+    public UserRequest(Integer id, String name, String email, Integer addressId, Integer age) {
         this.id = id;
         this.name = name;
         this.email = email;
@@ -15,7 +15,7 @@ public class User {
         this.age = age;
     }
 
-    public int getId() {
+    public Integer getId() {
         return id;
     }
 
@@ -27,11 +27,11 @@ public class User {
         return email;
     }
 
-    public int getAddressId() {
+    public Integer getAddressId() {
         return addressId;
     }
 
-    public int getAge() {
+    public Integer getAge() {
         return age;
     }
 }
